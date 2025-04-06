@@ -1,0 +1,247 @@
+html {
+    height: 100%;
+    margin: 0;
+    
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-image: url('backgroundimg.jpg');
+    font-family: 'Ribeye','Arial', sans-serif;
+}
+
+h1 {
+    text-align: center;  
+    font-size: 3.5rem; 
+    letter-spacing: 2px; 
+    border-radius: 5px;
+    margin-top: 20px;
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 40px;
+}
+
+.page-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    width: 100%;
+}
+
+/* Left section styling */
+.add-emoji-form {
+    width: 40%; /* One-third of the page width */
+    padding: 20px;
+    border-right: 1px solid #ccc; /* Adds a separator between sections */
+}
+
+/* Right section styling */
+.emoji-converter-form {
+    width: 50%; /* Two-thirds of the page width */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input[type="text"] {
+    width: 500px; 
+    height: 100px; 
+    background-color: whitesmoke; 
+    font-family: 'serif','Arial', sans-serif;
+    font-size: 26px; 
+    text-align: center; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 15px;
+}
+input[type="text"]:focus {
+    outline: none; 
+}
+input[type="submit"] {
+    margin-top: 10px; 
+    font-family: 'Ribeye','Arial', sans-serif;
+    font-size: 1rem; 
+    padding: 10px 20px; 
+    width: 150px; 
+    color: #333; 
+    background: linear-gradient(45deg, rgb(222, 211, 11), rgb(255, 165, 0), rgb(255, 140, 0)); 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+}
+/* Style for buttons */
+.button-container .button-container2{
+    display: flex; /* Enables flexbox layout */
+    justify-content: center; /* Centers buttons horizontally */
+    gap: 10px; /* Adds space between buttons */
+}
+
+.button-container button {
+    margin: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, rgb(222, 211, 11), rgb(255, 165, 0), rgb(255, 140, 0)); 
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Ribeye','Arial', sans-serif;
+    font-size: 1rem;
+    width: 150px;
+}
+
+.button-container2 button {
+    margin: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, rgb(222, 211, 11), rgb(255, 165, 0), rgb(255, 140, 0)); 
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Ribeye','Arial', sans-serif;
+    font-size: 1rem;
+    width: 150px;
+}
+
+button:hover {
+    background-color: rgb(227, 105, 105); /* Darker blue on hover */
+}
+
+.output-container {
+    margin-top: 20px; 
+    width: 500px; 
+    height: 200px; 
+    font-size: 60px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    text-align: center; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 15px; 
+    background-color: whitesmoke; 
+    resize: none;
+}
+
+#suggestions {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: calc(100% - 120px); 
+    left: 0;
+    z-index: 2000;
+    width: 100%;
+    max-height: 200px;
+    border-radius: 5px; 
+    overflow-y: auto; /* Adds scroll if content exceeds max height */
+
+}
+
+#suggestions li {
+    padding: 5px;
+    cursor: pointer;
+    background: linear-gradient(45deg, rgb(222, 211, 11), rgb(255, 165, 0), rgb(255, 140, 0)); 
+    opacity: 0.8;
+    text-align: center;
+    font-family: 'serif','Arial', sans-serif;
+    font-size: 16px;
+}
+
+.add-emoji-form {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-emoji-form input {
+    margin: 10px 0;
+    padding: 8px;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    font-family: 'serif','Arial', sans-serif;
+}
+
+.add-emoji-form button {
+    padding: 10px 20px;
+    background: linear-gradient(45deg, rgb(222, 211, 11), rgb(228, 76, 76),  rgb(227, 105, 105), rgb(222, 211, 11)); 
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Ribeye','Arial', sans-serif;
+    font-size: 16px;
+}
+.add-emoji-form button:hover {
+    background-color: #45a049;
+}
+
+.success {
+    color: green;
+    margin-top: 10px;
+}
+
+.error {
+    color: rgb(74, 9, 9);
+    margin-top: 10px;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;  
+    font-size: 2rem; 
+    letter-spacing: 2px; 
+    background: linear-gradient(45deg, rgb(222, 211, 11), rgb(228, 76, 76),  rgb(227, 105, 105), rgb(222, 211, 11)); 
+    border-radius: 5px;
+    margin-top: 20px;
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+/* Footer styling */
+.footer {
+    width: 100%; /* Full width */
+    background-color: #333; /* Blue background matching buttons */
+    color: white; /* White text for contrast */
+    text-align: center; /* Center-align text */
+    padding: 15px 0; /* Vertical padding for spacing */
+    margin-top: auto; /* Add spacing above footer */
+}
+
+.footer p {
+    margin: 0; /* Remove default margin */
+    font-size: 14px; /* Slightly smaller font size */
+    font-family: 'serif','Arial', sans-serif;
+}
+
+
+@media (max-width: 1075px) {
+    h1 {
+        font-size: 2.5rem; /* Reduce font size on smaller screens */
+        margin-bottom: 20px; /* Adjust spacing */
+    }
+    .page-container {
+        flex-direction: column; /* Stack sections vertically on small screens */
+        align-items: center; /* Center both sections horizontally */
+        gap: 10px; /* Reduce gap between sections */
+        width: 100%;
+    }
+
+    .add-emoji-form, .emoji-converter-form {
+        width: 90%; /* Both sections take most of the screen width */
+        padding-bottom: 20px; /* Add spacing between stacked sections */
+        border-radius: 8px; /* Keep rounded corners for aesthetics */
+    }
+}
