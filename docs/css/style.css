@@ -9,7 +9,7 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    background-image: url('backgroundimg.jpg');
+    background-image: url('../images/backgroundimg.jpg');
     font-family: 'Ribeye','Arial', sans-serif;
 }
 
