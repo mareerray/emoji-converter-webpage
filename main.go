@@ -22,7 +22,7 @@ func main() {
 	defer internal.DB.Close() /// Ensure the database connection is closed when the program exits
 
 	// Create table if it doesn't exist
-	err = internal.CreateTable()
+	err = internal.InitializeDatabase()
 	if err != nil {
 		fmt.Println("Failed to create table:", err)
 		return

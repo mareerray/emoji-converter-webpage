@@ -35,6 +35,23 @@ type Emoji struct {
 	Symbol string `json:"symbol"`
 }
 
+// InitializeDatabase sets up the database using the schema file
+func InitializeDatabase() error {
+    schemaSQL, err := os.ReadFile("schema.sql")
+    if err != nil {
+        return err
+    }
+
+    _, err = DB.Exec(string(schemaSQL))
+    if err != nil {
+        return err
+    }
+
+    log.Println("Database schema initialized")
+    return nil
+}
+
+
 // SeedDatabaseFromJSON loads emojis from a JSON file and inserts them into the database
 func SeedDatabaseFromJSON(filePath string) error {
 	// Open the JSON file
@@ -71,33 +88,33 @@ func SeedDatabaseFromJSON(filePath string) error {
 }
 
 // CreateTable creates the emoji table if it doesn't exist
-func CreateTable() error {
-	// Drop existing tables (useful during development)
-	_, _ = DB.Exec("DROP TABLE IF EXISTS emoji_prefixes;")
-	_, _ = DB.Exec("DROP TABLE IF EXISTS emojis;")
+// func CreateTable() error {
+// 	// Drop existing tables (useful during development)
+// 	_, _ = DB.Exec("DROP TABLE IF EXISTS emoji_prefixes;")
+// 	_, _ = DB.Exec("DROP TABLE IF EXISTS emojis;")
 
-	// Create emojis table with UTF-8 collation
-	_, err := DB.Exec(`
-		CREATE TABLE IF NOT EXISTS emojis (
-			id INTEGER PRIMARY KEY AUTOINCREMENT, 
-			name TEXT NOT NULL UNIQUE COLLATE NOCASE, 
-			symbol TEXT NOT NULL COLLATE NOCASE
-		);
-	`)
-	if err != nil {
-		return err
-	}
+// 	// Create emojis table with UTF-8 collation
+// 	_, err := DB.Exec(`
+// 		CREATE TABLE IF NOT EXISTS emojis (
+// 			id INTEGER PRIMARY KEY AUTOINCREMENT, 
+// 			name TEXT NOT NULL UNIQUE COLLATE NOCASE, 
+// 			symbol TEXT NOT NULL COLLATE NOCASE
+// 		);
+// 	`)
+// 	if err != nil {
+// 		return err
+// 	}
 
-	// Create emoji_prefixes table
-	_, err = DB.Exec(`
-		CREATE TABLE IF NOT EXISTS emoji_prefixes (
-			prefix TEXT NOT NULL, 
-			emoji_name TEXT NOT NULL, 
-			FOREIGN KEY (emoji_name) REFERENCES emojis(name) ON DELETE CASCADE
-			);
-		`)
-	return err
-}
+// 	// Create emoji_prefixes table
+// 	_, err = DB.Exec(`
+// 		CREATE TABLE IF NOT EXISTS emoji_prefixes (
+// 			prefix TEXT NOT NULL, 
+// 			emoji_name TEXT NOT NULL, 
+// 			FOREIGN KEY (emoji_name) REFERENCES emojis(name) ON DELETE CASCADE
+// 			);
+// 		`)
+// 	return err
+// }
 
 func InsertEmoji(name string, symbol string) error {
 	// Insert into emojis table

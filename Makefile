@@ -1,6 +1,7 @@
 # Define variables
 APP_NAME = emoji-webpage
 DB_FILE = emoji_converter.db
+SCHEMA_FILE = schema.sql
 
 # Default target (runs the application)
 run:
@@ -20,7 +21,7 @@ clean:
 
 # Initialize the database (create if it doesn't exist)
 init-db:
-	sqlite3 $(DB_FILE) "\
+	sqlite3 $(DB_FILE) < $(SCHEMA_FILE) "\
 	CREATE TABLE IF NOT EXISTS emojis (\
 		id INTEGER PRIMARY KEY AUTOINCREMENT, 
 		name TEXT NOT NULL, 
