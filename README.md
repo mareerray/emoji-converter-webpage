@@ -61,7 +61,7 @@ Before running this project, ensure you have the following installed on your sys
 ## Setup Instructions
 Step 1: Clone the Repository
 ```
-git clone https://github.com/yourusername/emoji-converter-webpage.git
+git clone https://github.com/mareerray/emoji-converter-webpage.git
 cd emoji-converter-webpage
 ```
 Step 2: Install Dependencies
